@@ -156,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HotelModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ponuda.cs" />
     <Compile Include="Models\Racun.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
