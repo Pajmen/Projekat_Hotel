@@ -1,0 +1,332 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid red;*/
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    color: white;
+    background-image: url("../images/bckg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    text-align: center;
+    background-image: url("../images/hotel1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-bottom: 0;
+}
+
+    header > img {
+        width: 100px;
+        margin-top: 100px;
+    }
+
+
+    .naslov h1 {
+        color: #edf3ff;
+        font-size: 110px;
+        font-style: italic;
+        margin-top: 80px;
+        margin-bottom: 5px;
+        text-shadow: 3px 3px black;
+    }
+
+    .naslov p {
+        font-size: 30px;
+        font-weight: normal;
+        margin: 0;
+        text-shadow: 2px 2px black;
+        color: #0BB4BE;
+    }
+
+    .naslov img {
+        position: relative;
+        /*padding-top: -50px;*/
+        margin-top: 0;
+        width: 20%;
+    }
+
+#gornjaSlika {
+    position: relative;
+    top: 90px;
+    width: 120px;
+}
+
+.navContainer {
+    display: flex;
+    position: fixed;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 98.5%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    min-height: 55px;
+    z-index: 1000;
+}
+
+
+/* Navigacija */
+.topnav {
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+}
+
+    .topnav a {
+        float: left;
+        /*color: #f7d61d; */
+        color: #edf3ff;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 400;
+        text-shadow: 2px 2px 2px black;
+        border: none;
+    }
+
+        .topnav a:hover {
+            background-color: transparent;
+            color: white;
+            border-bottom: 4px solid #0BB4BE;
+            transition: .2s linear;
+            transform: scale(1.1);
+        }
+
+
+#wrap {
+    max-width: 1000px;
+    margin: 2px auto;
+    color: gold;
+    background-color: #0b1019;
+    margin-top: 0;
+    border-top: 1px solid transparent;
+}
+
+#wrap h2 {
+        color: #0BB4BE;
+        font-size: 30px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+
+#wrap p {
+        font-family: Tahoma, sans-serif;
+        font-size: 18px;
+    }
+
+#ponuda {
+    min-height: 30px;
+}
+
+#slikeBox {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+#slikeBox div {
+        display: flex;
+        width: 70%;
+        flex: 1;
+        /*border: 1px solid #ddd;*/
+        border-radius: 4px;
+        padding: 5px 5px 30px 5px;
+        margin: 5px 10px 5px 10px;
+        box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.4);
+        transition-duration: .8s;
+    }
+
+#slikeBox div:hover {
+            transform: scale(1.02);
+        }
+
+#slikeBox p {
+        color: #edf3ff;
+        margin-top: 10px;
+        font-size: 15px;
+        float: left;
+        padding-left: 15px;
+        font-family: 'Noto Serif', serif;
+        font-weight: bold;
+    }
+
+#slikeBox img {
+        flex-basis: 25%;
+        width: 100%;
+        align-self: center;
+    }
+
+
+
+
+
+
+#prvaSlika, #drugaSlika, #trecaSlika {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#dostupnost {
+    display: flex;
+    padding: 5px;
+    margin: 20px;
+    border: 1px solid #0BB4BE;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+#dostupnost a {
+        text-decoration: none;
+        color: #0BB4BE;
+    }
+
+#dostupnost a:hover {
+            color: #edf3ff;
+        }
+
+.restoran {
+    text-align: center;
+    background-image: url("../images/restoran.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 70vh;
+}
+
+.restoran img {
+        width: 100px;
+        margin-top: 100px;
+    }
+
+.recepcija {
+    text-align: center;
+    background-image: url("../images/recepcija.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 40vh;
+}
+
+.recepcija img {
+        width: 100px;
+        margin-top: 100px;
+    }
+
+#veze {
+    display: block;
+    margin-top: 30px;
+    align-items: center;
+    flex-direction: column;
+}
+
+#veze h2 {
+    align-items: flex-start;
+    }
+
+#veze img {
+        width: 30px;
+        border-radius: 5%;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-top: 15px;
+    }
+
+.mapouter {
+    display: inline-block;
+    margin-left: 15px;
+    width: 60%;
+}
+
+#adr {
+    display: inline-block;
+    position: relative;
+    bottom: 130px;
+    right: -70px;
+    color: #edf3ff;
+    text-align: right;
+    font-size: 1.2em;
+}
+#adr h4 {
+    margin-top: 50px;
+}
+#fb, #tw, #pt {
+    display: inline-block;
+    background-color: transparent;
+}
+
+footer {
+    display: block;
+    font-family: 'Noto Serif', serif;
+    margin-top: 30px;
+    background-color: rgba(11, 180, 190, 0.2);
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#sobTab {
+    display: none;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+}
+#sobTab table {
+    margin-bottom: 20px;
+    margin-left: 12%;
+    width: 80%;
+}
+#sobTab th {
+    padding: 15px;
+}
+#sobTab tr:nth-child(even) {
+        background: #202633;
+    }
+
+#sobTab tr:nth-child(odd) {
+    background: #0b1019;
+    }
+
+#uslTab {
+    display: none;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+}
+#uslTab table {
+        margin-bottom: 20px;
+        margin-left: 12%;
+        width: 80%;
+}
+#uslTab th {
+        padding: 15px;
+}
+
+#uslTab tr:nth-child(even) {
+        background: #202633;
+}
+
+#uslTab tr:nth-child(odd) {
+        background: #0b1019;
+}
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Usluga>
+
+@{
+    ViewBag.Title = "Usluge";
+}
+
+<h2>Spisak usluga</h2>
+
+<p>
+    @Html.ActionLink("Nova usluga", "NovaUsluga", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UslugaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivUsluge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UslugaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazivUsluge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Izmeni", new { id = item.UslugaID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+
+                @Html.ActionLink("Obriši", "ObrisiUslugu", new { id = item.UslugaID }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

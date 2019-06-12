@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Rezervacija>
+
+@{
+    ViewBag.Title = "Rezevacije";
+}
+
+<h2>Rezervacije</h2>
+
+<p>
+    @Html.ActionLink("Nova rezervacija", "NovaRezervacija", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RezervacijaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check_In)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check_Out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gost.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soba.SobaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usluga.NazivUsluge)
+        </th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RezervacijaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check_In)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check_Out)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gost.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soba.SobaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Izmeni", new { id = item.RezervacijaID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+                @Html.ActionLink("Detaljnije", "Detalji", new { id = item.RezervacijaID }, htmlAttributes: new { @class = "btn btn-info btn-sm" }) |
+                @Html.ActionLink("Račun", "NoviRacun","Racun", new { id = item.RezervacijaID }, htmlAttributes: new { @class = "btn btn-primary btn-sm" }) |
+            </td>
+        </tr>
+    }
+
+</table>

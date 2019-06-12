@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Soba>
+    @using Projekat_Hotel.Models
+
+<h2>
+    Trenutno slobodne sobe
+</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SobaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojKreveta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pogled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sprat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Ponuda.SveSobe()) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SobaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojKreveta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pogled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sprat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        
+        
+    </tr>
+}
+
+</table>

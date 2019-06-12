@@ -3,40 +3,130 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Hotel Madrigal</title>
+    <link rel="shortcut icon" href="~/images/ico.ico">
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <a style="display: inline; position:fixed;top:5px;left:35px;z-index: 1200;" href="../Home/Index" title="Pocetna stranica"><img src="~/images/MM33.png" /></a>
+
+
+    <nav class="navbar navbar-inverse" id="navnav">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("Madrigal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                @if (Session["UserId"] != null)
+                {
+                    var uloga = Session["Privilegije"].ToString();
+                    if (uloga == "1")
+                    {
+                <ul class="nav navbar-nav ">
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Zaposleni", "SviRadnici", "Radnik")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Uloge", "SveUloge", "Alati")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Sobe", "Index", "Sobas")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Statusi soba", "SviStatusi", "Alati")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Rezervacije", "SveRezervacije", "Rezervacija")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Gosti", "SviGosti", "Gost")
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Usluge", "SveUsluge", "Usluga")
+                    </li>
+                    <li class="nav-item nav-link">
+                        @Html.ActionLink("Racuni", "SviRacuni", "Racun")
+                    </li>
                 </ul>
+                    }
+                    else if (uloga == "2")
+                    {
+                        <ul class="nav navbar-nav ">
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Zaposleni", "SviZaposleni", "Manager")
+                            </li>
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Sobe", "SveSobe", "Manager")
+                            </li>
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Gosti", "SviGosti", "Gost")
+                            </li>
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Računi", "SviRacuni", "Manager")
+                            </li>
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Rezervacije", "SveRezervacije", "Rezervacija")
+                            </li>
+
+                        </ul>
+                    }
+                    else if (uloga == "3")
+                    {
+                        <ul class="nav navbar-nav ">
+
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Sobe", "SveSobe", "Recepcija")
+                            </li>
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Gosti", "SviGosti", "Recepcija")
+                            </li>
+                            @*<li class="nav-item nav-link">
+                                @Html.ActionLink("Izdavanje računa", "NoviRacun", "Racun")
+                            </li>*@
+                            <li class="nav-item nav-link">
+                                @Html.ActionLink("Rezervacije", "SveRezervacije", "Rezervacija")
+                            </li>
+                        </ul>
+                    }
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item nav-link navbar-right">
+                            @*<label style="color: white"> @Session["Ime"]</label>*@ @Html.ActionLink("Logout", "Logout", "Login")
+                        </li>
+                    </ul>
+
+                }
+                else
+                {
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item nav-link navbar-right">
+                            @Html.ActionLink("Login", "Index", "Login")
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
-    </div>
+    </nav>
+    <br />
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Bojanov i Pavlov završni rad</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
+    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>

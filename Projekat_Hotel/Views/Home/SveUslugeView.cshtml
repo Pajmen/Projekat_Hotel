@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Usluga>
+@using Projekat_Hotel.Models
+<h2>
+    Cena usluga
+</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivUsluge)
+        </th>
+        <th>
+            Cena po osobi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Ponuda.SveUsluge()) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivUsluge)
+        </td>
+        <td>
+            @{ double cena = item.Cena * 120;
+                double cena1 = item.Cena * 250;}
+           @cena - @cena1 RSD
+        </td>
+        
+    </tr>
+}
+
+</table>

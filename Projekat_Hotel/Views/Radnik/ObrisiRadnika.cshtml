@@ -1,0 +1,97 @@
+﻿@model Projekat_Hotel.Models.Radnik
+
+@{
+    ViewBag.Title = "Brisanje radnika";
+}
+
+<h2>Obriši:</h2>
+
+<h3>Jeste li sigurni da želite da obrišete ove podatke?</h3>
+<div>
+    <h4>Radnik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumZaposlenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumZaposlenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RadnoMesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RadnoMesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KorisnickoIme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KorisnickoIme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lozinka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lozinka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uloga.NazivUloge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uloga.NazivUloge)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Briši" class="btn btn-default" /> |
+            @Html.ActionLink("Spisak zaposlenih", "SviRadnici", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+        </div>
+    }
+</div>

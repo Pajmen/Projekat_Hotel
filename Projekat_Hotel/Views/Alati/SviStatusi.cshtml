@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<Projekat_Hotel.Models.StatusSobe>
+
+@{
+    ViewBag.Title = "Statusi soba";
+}
+
+<h2>Statusi soba</h2>
+
+<p>
+    @Html.ActionLink("Novi status", "NoviStatus", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivStatusa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivStatusa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivStatusa)
+        </td>
+        <td>
+        <td>
+            @Html.ActionLink("Izmeni", "IzmeniStatus", new { id = item.StatusID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+
+            @Html.ActionLink("Obriši", "ObrisiStatus", new { id = item.StatusID }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+        </td>
+        </td>
+    </tr>
+    }
+
+</table>

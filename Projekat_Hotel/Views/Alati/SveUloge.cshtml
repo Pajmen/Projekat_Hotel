@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Uloga>
+
+@{
+    ViewBag.Title = "Uloge";
+}
+
+<h2>Sve uloge</h2>
+
+<p>
+    @Html.ActionLink("Dodaj ulogu", "NovaUloga", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UlogaID)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivUloge)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UlogaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivUloge)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Izmeni", new { id = item.UlogaID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+           
+            @Html.ActionLink("Obriši", "Obrisi", new { id = item.UlogaID }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+    }
+
+</table>

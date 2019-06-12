@@ -1,0 +1,39 @@
+﻿@model Projekat_Hotel.Models.Uloga
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Jeste li sigurni daželite da obrišete ovu ulogu?</h3>
+<div>
+    <h4>Uloga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UlogaID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UlogaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivUloge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazivUloge)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Obriši" class="btn btn-default" /> |
+        @Html.ActionLink("Sve uloge", "SveUloge", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+    </div>
+    }
+</div>

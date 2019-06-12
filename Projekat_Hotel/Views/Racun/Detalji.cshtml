@@ -1,0 +1,78 @@
+﻿@model Projekat_Hotel.Models.Racun
+
+@{
+    ViewBag.Title = "Detalji računa";
+}
+
+<h2>Detalji računa</h2>
+
+<div>
+    <h4>Racun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.SobaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.SobaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NacinPlacanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacinPlacanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iznos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iznos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.GostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.GostID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.Gost.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.Gost.Ime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.Gost.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.Gost.Prezime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.Check_In)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.Check_In)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.Check_Out)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.Check_Out)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Print", "Izmeni", new { id = Model.RacunID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+    @Html.ActionLink("Spisak računa", "SviRacuni", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>

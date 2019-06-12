@@ -1,31 +1,182 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+        ViewBag.Title = "Home Page";
+    }
+
+@{
+    Layout = "";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hotel Madrigal</title>
+    <link href="~/Content/Stil.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/images/ico.ico">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+
+
+</head>
+<body>
+    <header>
+        <a id="pocetak"> </a>
+        <a style="display: inline; position:fixed;top:5px;right:35px;width: 10px;z-index: 1200;" href="../Login/Index" title="LogIn"><img src="~/images/key22.png" /></a>
+
+        <div class="navContainer">
+            <div class="topnav">
+                <a href="#pocetak">Naslovna strana</a>
+                <a href="#ponuda">Ponuda i usluge </a>
+                <a href="#sobe">Sobe i apartmani</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+        </div>
+        <div class="naslov">
+            <img id="gornjaSlika" src="~/images/zvezde1.png" />
+            <h1>Madrigal<p>Madrigal Group Ltd. </p></h1>
+        </div>
+    </header>
+
+
+
+    <div id="wrap">
+        <a id="ponuda"><br></a>
+
+
+        <h2>Usluge</h2>
+        <div id="uslSlike">
+            <div id="slikeBox">
+
+                <div id="prvaSlika"><img src="~/images/dorucak.jpg" /><p>Doručak<span></span></p></div>
+                <div id="drugaSlika"><img src="~/images/rucak.jpg" /><p>Polupansion<span></span></p></div>
+                <div id="trecaSlika"><img src="~/images/vecera.jpg" /><p>Puni pansion<span></span></p></div>
+            </div>
+            <div id="slikeBox">
+                <div id="prvaSlika"><img src="~/images/roomS.jpg" /><p>Room Service<span></span></p></div>
+                <div id="drugaSlika"><img src="~/images/ket.jpg" /><p>Ketering<span></span></p></div>
+                <div id="trecaSlika"><img src="~/images/bar.jpg" /><p>Bar<span></span></p></div>
+            </div>
+        </div>
+        <h2>Ponuda</h2>
+        <center>
+            <img src="~/images/Ikone11.jpg" usemap="#image-map">
+
+            <map name="image-map">
+                <area target="" alt="Teretni lift" title="Teretni lift"  coords="251,37,344,110" shape="rect">
+                <area target="" alt="Plaćanje karticom" title="Plaćanje karticom"  coords="371,35,483,110" shape="0">
+                <area target="" alt="BellBoy" title="BellBoy"  coords="509,34,624,111" shape="0">
+                <area target="" alt="Ljubimci su dozvoljeni" title="Ljubimci su dozvoljeni"  coords="634,36,752,113" shape="0">
+                <area target="" alt="Sef" title="Sef"  coords="764,38,878,117" shape="0">
+                <area target="" alt="Klima uređaj" title="Klima uređaj"  coords="368,114,490,183" shape="0">
+                <area target="" alt="Buđenje na zahtev" title="Buđenje na zahtev"  coords="510,116,629,181" shape="0">
+                <area target="" alt="Kraljevski krevet" title="Kraljevski krevet"  coords="641,120,753,183" shape="0">
+                <area target="" alt="Restoran" title="Restoran"  coords="243,192,357,260" shape="0">
+                <area target="" alt="Usluge praonice" title="Usluge praonice"  coords="375,190,489,266" shape="0">
+                <area target="" alt="Kamin" title="Kamin"  coords="511,188,625,261" shape="0">
+                <area target="" alt="Prevoz i rent-a-car" title="Prevoz i rent-a-car"  coords="639,190,753,265" shape="0">
+                <area target="" alt="Minibus prevoz" title="Minibus prevoz"  coords="763,192,881,259" shape="0">
+            </map>
+
+        </center>
+        <div onclick="tabela2()" id="dostupnost"><a style="cursor: pointer;"> Proverite cene usluga </a></div>
+        <div id="uslTab">    
+            @Html.Partial("SveUslugeView")
+        </div>
+
+
+        <div class="restoran"></div>
+
+        <a id="sobe"><br><br></a>
+        <h2>Sobe i apartmani</h2>
+
+        <div id="slikeBox">
+            <div id="prvaSlika"><img src="~/images/s1.jpg" /><p>Jednokrevetna soba</p></div>
+            <div id="drugaSlika"><img src="~/images/s2.jpg" /><p>Dvokrevetna soba</p></div>
+            <div id="trecaSlika"><img src="~/images/a2.jpg" /><p>Apartman</p></div>
+
+        </div>
+        <div onClick="tabela()" id="dostupnost"><a style="cursor: pointer;"> Proverite dostupnost</a></div>
+
+        <div id="sobTab">
+            @Html.Partial("SlobodneSobeView")
+        </div>
+
+        <div class="recepcija">
+
+        </div>
+
+        <a id="kontakt"><br><br></a>
+        <div id="veze">
+
+            <h2>Kontakt</h2>
+            <div id="mapa-adresa">
+                <div class="mapouter">
+                    <div class="gmap_canvas"><iframe width="670" height="350" id="gmap_canvas" src="https://maps.google.com/maps?q=belgrade%20kosancicev%20venac&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
+                    <style>
+                        .mapouter {
+                            position: relative;
+                            text-align: right;
+                            height: 350px;
+                            width: 670px;
+                        }
+
+                        .gmap_canvas {
+                            overflow: hidden;
+                            background: none !important;
+                            height: 350px;
+                            width: 670px;
+                        }
+                    </style>
+                </div>
+
+                <div id="adr">
+                    <h3>Hotel Madrigal</h3> <br />
+                    Kosančićev Venac, <br />
+                    11000 Beograd, Srbija <br />
+                    <h4>(+381)11 2 100 555</h4>
+                </div>
+            </div>
+            <center>
+                <div>
+                    <a href="http://www.facebook.com" title="Facebook"><img id="fb" src="~/images/facebook.png" /></a>
+                    <a href="http://www.twitter.com" title="Twitter"><img id="tw" src="~/images/twitter.png" /></a>
+                    <a href="http://www.pinterest.com" title="Pinterest"><img id="pt" src="~/images/pinterest.png" /></a>
+                </div>
+            </center>
+        </div>
+
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <footer>
+        &copy Hotel Madrigal by PIB 2019
+    </footer>
+    
+    <script>
+        var brojac1 = 0;
+        function tabela() {
+
+            brojac1 += 1;
+            if (brojac1 % 2 == 1) {
+                document.getElementById("sobTab").style.display = "block";
+            } else {
+                document.getElementById("sobTab").style.display = "none";
+            }
+        }
+        var brojac = 0;
+        function tabela2() {
+
+            brojac += 1;
+            if (brojac % 2 == 1) {
+                document.getElementById("uslTab").style.display = "block";
+            } else {
+                document.getElementById("uslTab").style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+

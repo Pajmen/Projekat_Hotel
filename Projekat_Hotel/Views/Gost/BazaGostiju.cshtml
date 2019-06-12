@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Gost>
+
+@{
+    ViewBag.Title = "Baza Gostiju";
+}
+
+<h2>Baza svih gostiju</h2>
+
+
+<table class="table" id="sviGosti">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GostID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GostID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "IzmeniGosta", new { id = item.GostID.Trim() }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Obrisi", "ObrisiGosta", new { id = item.GostID.Trim() }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#sviGosti').DataTable();
+    });
+
+</script>

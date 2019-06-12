@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Radnik>
+
+@{
+    ViewBag.Title = "Svi zaposleni";
+}
+
+<h2>Svi Zaposleni</h2>
+
+
+<table id="sviZaposleni" class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JMBG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumZaposlenja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RadnoMesto)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.JMBG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumZaposlenja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RadnoMesto)
+            </td>
+
+
+        </tr>
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#sviZaposleni').DataTable();
+    });
+
+</script>

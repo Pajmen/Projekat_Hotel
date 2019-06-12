@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<Projekat_Hotel.Models.Racun>
+
+@{
+    ViewBag.Title = "Računi-početna";
+}
+
+<h2>Računi</h2>
+
+<p>
+    @Html.ActionLink("Novi račun", "NoviRacun", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Broj rezervacije
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NacinPlacanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iznos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rezervacija.GostID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Storno)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RezervacijaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NacinPlacanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iznos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezervacija.GostID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Storno)
+            </td>
+            <td>
+                @Html.ActionLink("Storniraj", "Storno", new { id = item.RacunID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Detalji", "Detalji", new { id = item.RacunID }, htmlAttributes: new { @class = "btn btn-info btn-sm" })
+                
+
+            </td>
+        </tr>
+    }
+
+</table>

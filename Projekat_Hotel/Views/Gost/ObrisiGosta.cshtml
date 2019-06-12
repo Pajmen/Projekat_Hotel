@@ -1,0 +1,48 @@
+﻿@model Projekat_Hotel.Models.Gost
+
+@{
+    ViewBag.Title = "Gost-Brisanje";
+}
+
+<h2>Obrisi gosta</h2>
+
+<h3>Jeste li sigurni da želite da obrišete ovog gosta iz baze?</h3>
+<div>
+    <h4>Gost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GostID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Spisak gostiju", "SviGosti")
+        </div>
+    }
+</div>

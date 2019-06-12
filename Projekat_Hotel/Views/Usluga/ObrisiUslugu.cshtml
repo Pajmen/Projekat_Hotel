@@ -1,0 +1,48 @@
+﻿@model Projekat_Hotel.Models.Usluga
+
+@{
+    ViewBag.Title = "Brisanje";
+}
+
+<h2>Brisanje</h2>
+
+<h3>Jeste li sigurni da želite da obrišete ovu uslugu?</h3>
+<div>
+    <h4>Usluga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UslugaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UslugaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivUsluge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazivUsluge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Spisak usluga", "SveUsluge", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+        </div>
+    }
+</div>

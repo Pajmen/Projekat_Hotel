@@ -1,0 +1,91 @@
+﻿@model Projekat_Hotel.Models.Radnik
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/images/ico.ico">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+
+
+
+    <style>
+        body {
+            background-image: url('../../images/bckg.jpg');
+        }
+
+        table {
+            position: absolute;
+            top: 30%;
+            left: 38%;
+            border-collapse: separate;
+            border-radius: 10px;
+            border: 1px solid #0BB4BE;
+            padding: 20px;
+        }
+
+        .field-validation-error {
+            font-size: smaller;
+            color: mediumpurple;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #0BB4BE;
+            border-color: #2e6da4;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        #uloguj {
+            font-size: 1.7em;
+            font-family: 'Noto Serif', serif;
+            color: #0BB4BE;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        label {
+            padding-top: 10px;
+            font-size: 1.3em;
+        }
+
+        .form-control {
+            background-color: rgba(11,18,27,0.15);
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Uloguj", "Login", FormMethod.Post, new { @class = "form-group" }))
+    {
+        <table class="table-condensed">
+            <tr><th id="uloguj">Ulogujte se</th><th></th></tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.KorisnickoIme)</td>
+                <td>@Html.EditorFor(model => model.KorisnickoIme, new { htmlAttributes = new { @class = "unos form-control", placeholder = "Unesi korisnicko ime" } })</td>
+            </tr>
+
+            <tr><td></td><td class="message">@Html.ValidationMessageFor(model => model.KorisnickoIme, "", new { @class = "text-danger" })</td></tr>
+            <tr>
+
+                <td>@Html.LabelFor(model => model.Lozinka)</td>
+                <td>@Html.EditorFor(model => model.Lozinka, new { htmlAttributes = new { @class = "unos form-control", placeholder = "Unesi lozinku", @type = "password" } })</td>
+            </tr>
+            <tr><td></td><td class="message">@Html.ValidationMessageFor(model => model.Lozinka)</td></tr>
+            <tr><td></td><td><button type="submit" class="btn btn-primary">Log</button></td></tr>
+            <tr><td colspan="2"><label class="field-validation-error">@Html.DisplayFor(model => model.LogingErrorMessage)</label></td></tr>
+        </table>
+    }
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+   
+   
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+﻿@model Projekat_Hotel.Models.Rezervacija
+
+@{
+    ViewBag.Title = "Detalji";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <h4>Rezervacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RezervacijaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RezervacijaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Check_In)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check_In)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Check_Out)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check_Out)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gost.GostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gost.GostID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gost.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gost.Ime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gost.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gost.Prezime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Soba.SobaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soba.SobaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soba.Pogled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soba.Pogled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usluga.NazivUsluge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usluga.NazivUsluge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Izmeni", new { id = Model.RezervacijaID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+    @Html.ActionLink("Spisak rezervacija", "SveRezervacije", null,  htmlAttributes: new { @class = "btn btn-primary btn-sm"  })
+</p>

@@ -1,0 +1,90 @@
+﻿
+@model Projekat_Hotel.Models.Radnik
+
+@{
+    ViewBag.Title = "Zaposleni-detalji";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zaposleni-detalji</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumZaposlenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumZaposlenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RadnoMesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RadnoMesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KorisnickoIme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KorisnickoIme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lozinka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lozinka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uloga.NazivUloge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uloga.NazivUloge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Izmeni", new { id = Model.JMBG }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) |
+    @Html.ActionLink("Spisak zaposlenih", "SviRadnici", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</p>

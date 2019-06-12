@@ -1,0 +1,66 @@
+﻿@model Projekat_Hotel.Models.Racun
+
+@{
+    ViewBag.Title = "Izdavanje računa";
+}
+
+<h2>Izdavanje računa</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Racun</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.RezervacijaID, "RezervacijaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.RezervacijaID, htmlAttributes: new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.RezervacijaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            @*@Html.LabelFor(model => model.RezervacijaID, "RezervacijaID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("RezervacijaID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RezervacijaID, "", new { @class = "text-danger" })
+                </div>*@
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NacinPlacanja, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+
+                @Html.DropDownListFor(m => m.NacinPlacanja, (SelectList)ViewBag.nacinPlacanja, "Odaberite nacin placanja", new { @class = "css-class" })
+                @Html.ValidationMessageFor(model => model.NacinPlacanja, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Iznos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Iznos, new { htmlAttributes = new { @class = "form-control", @readonly="readonly"} })
+                    @Html.ValidationMessageFor(model => model.Iznos, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sačuvaj" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+
+    @Html.ActionLink("Spisak racuna", "SviRacuni", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+</div>
+
+

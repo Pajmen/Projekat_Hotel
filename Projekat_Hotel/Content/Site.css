@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('../images/in4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +25,56 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.disp {
+    font-size: 2em;
+}
+
+#navnav {
+    display: flex;
+    position: fixed;
+    margin-top: -50px;
+    margin-left: 0px;
+    width: 100%;
+    /*background-color: rgba(0, 0, 0, 1);*/
+    background-image: url('../images/bckgNav.jpg');
+    border-radius: 0 0 15px 15px;
+    padding: 10px;
+    min-height: 55px;
+    z-index: 1000;
+}
+
+ul.nav.navbar-nav.navbar-right > li a {
+    color: #0BB4BE;
+}
+
+    ul.nav.navbar-nav.navbar-right > li a:hover {
+        color: #fff;
+    }
+
+#navnav > div > div.navbar-collapse.collapse a:hover {
+    color: #fff;
+}
+
+#navnav > div > div.navbar-header > a:hover {
+    color: #fff;
+}
+
+
+
+body > div > table > tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+body > div > table > tbody tr:nth-child(odd) {
+    background: #f2f6fc;
+}
+
+#sviRadnici > tbody > tr:nth-child(even) {
+    background-color: #fff;
+}
+
+#sviRadnici > tbody > tr:nth-child(odd) {
+    background: #f2f6fc;
 }

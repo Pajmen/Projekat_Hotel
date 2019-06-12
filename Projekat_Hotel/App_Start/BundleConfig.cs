@@ -23,7 +23,7 @@ namespace Projekat_Hotel
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/Hotel_bootstrap.css",
                       "~/Content/site.css"));
         }
     }

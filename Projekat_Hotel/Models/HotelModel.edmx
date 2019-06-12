@@ -4,14 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gost">
           <Key>
             <PropertyRef Name="GostID" />
           </Key>
-          <Property Name="GostID" Type="int" Nullable="false" />
+          <Property Name="GostID" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Racun">
           <Key>
@@ -21,6 +22,7 @@
           <Property Name="RezervacijaID" Type="int" Nullable="false" />
           <Property Name="NacinPlacanja" Type="nvarchar" MaxLength="50" />
           <Property Name="Iznos" Type="float" />
+          <Property Name="Storno" Type="char" />
         </EntityType>
         <EntityType Name="Radnik">
           <Key>
@@ -35,17 +37,19 @@
           <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="50" />
           <Property Name="Lozinka" Type="nvarchar" MaxLength="50" />
           <Property Name="UlogaID" Type="int" />
+          <Property Name="Telefon" Type="varchar" />
         </EntityType>
         <EntityType Name="Rezervacija">
           <Key>
             <PropertyRef Name="RezervacijaID" />
           </Key>
-          <Property Name="RezervacijaID" Type="int" Nullable="false" />
-          <Property Name="GostID" Type="int" Nullable="false" />
+          <Property Name="RezervacijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GostID" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="UslugaID" Type="int" Nullable="false" />
           <Property Name="Check-In" Type="date" Nullable="false" />
           <Property Name="Check-Out" Type="date" Nullable="false" />
           <Property Name="SobaID" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Soba">
           <Key>
@@ -88,6 +92,7 @@
           </Key>
           <Property Name="UslugaID" Type="int" Nullable="false" />
           <Property Name="NazivUsluge" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cena" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="FK_Racun_Rezervacija">
           <End Role="Rezervacija" Type="Self.Rezervacija" Multiplicity="1" />
@@ -161,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HotelModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Gost" EntityType="Self.Gost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Racun" EntityType="Self.Racun" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Radnik" EntityType="Self.Radnik" Schema="dbo" store:Type="Tables" />
@@ -200,14 +205,15 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Gost">
           <Key>
             <PropertyRef Name="GostID" />
           </Key>
-          <Property Name="GostID" Type="Int32" Nullable="false" />
+          <Property Name="GostID" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Gost" FromRole="Gost" ToRole="Rezervacija" />
         </EntityType>
         <EntityType Name="Racun">
@@ -218,6 +224,7 @@
           <Property Name="RezervacijaID" Type="Int32" Nullable="false" />
           <Property Name="NacinPlacanja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Iznos" Type="Double" />
+          <Property Name="Storno" Type="String" />
           <NavigationProperty Name="Rezervacija" Relationship="Self.FK_Racun_Rezervacija" FromRole="Racun" ToRole="Rezervacija" />
         </EntityType>
         <EntityType Name="Radnik">
@@ -233,18 +240,20 @@
           <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UlogaID" Type="Int32" />
+          <Property Name="Telefon" Type="String" MaxLength="13" FixedLength="false" Unicode="true"  />
           <NavigationProperty Name="Uloga" Relationship="Self.FK_Radnik_Uloga" FromRole="Radnik" ToRole="Uloga" />
         </EntityType>
         <EntityType Name="Rezervacija">
           <Key>
             <PropertyRef Name="RezervacijaID" />
           </Key>
-          <Property Name="RezervacijaID" Type="Int32" Nullable="false" />
-          <Property Name="GostID" Type="Int32" Nullable="false" />
+          <Property Name="RezervacijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GostID" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="UslugaID" Type="Int32" Nullable="false" />
           <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SobaID" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
           <NavigationProperty Name="Gost" Relationship="Self.FK_Rezervacija_Gost" FromRole="Rezervacija" ToRole="Gost" />
           <NavigationProperty Name="Racuns" Relationship="Self.FK_Racun_Rezervacija" FromRole="Rezervacija" ToRole="Racun" />
           <NavigationProperty Name="Soba" Relationship="Self.FK_Rezervacija_Soba" FromRole="Rezervacija" ToRole="Soba" />
@@ -295,6 +304,7 @@
           </Key>
           <Property Name="UslugaID" Type="Int32" Nullable="false" />
           <Property Name="NazivUsluge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cena" Type="Double" Nullable="false" />
           <NavigationProperty Name="Rezervacijas" Relationship="Self.FK_Rezervacija_Usluga" FromRole="Usluga" ToRole="Rezervacija" />
         </EntityType>
         <Association Name="FK_Rezervacija_Gost">
@@ -409,28 +419,30 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="Hotel_DREntities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Hotel_DREntities">
           <EntitySetMapping Name="Gosts">
-            <EntityTypeMapping TypeName="HotelModel.Gost">
+            <EntityTypeMapping TypeName="Model.Gost">
               <MappingFragment StoreEntitySet="Gost">
                 <ScalarProperty Name="GostID" ColumnName="GostID" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Racuns">
-            <EntityTypeMapping TypeName="HotelModel.Racun">
+            <EntityTypeMapping TypeName="Model.Racun">
               <MappingFragment StoreEntitySet="Racun">
                 <ScalarProperty Name="RacunID" ColumnName="RacunID" />
                 <ScalarProperty Name="RezervacijaID" ColumnName="RezervacijaID" />
                 <ScalarProperty Name="NacinPlacanja" ColumnName="NacinPlacanja" />
                 <ScalarProperty Name="Iznos" ColumnName="Iznos" />
+                <ScalarProperty Name="Storno" ColumnName="Storno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Radniks">
-            <EntityTypeMapping TypeName="HotelModel.Radnik">
+            <EntityTypeMapping TypeName="Model.Radnik">
               <MappingFragment StoreEntitySet="Radnik">
                 <ScalarProperty Name="JMBG" ColumnName="JMBG" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
@@ -441,11 +453,12 @@
                 <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
                 <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
                 <ScalarProperty Name="UlogaID" ColumnName="UlogaID" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rezervacijas">
-            <EntityTypeMapping TypeName="HotelModel.Rezervacija">
+            <EntityTypeMapping TypeName="Model.Rezervacija">
               <MappingFragment StoreEntitySet="Rezervacija">
                 <ScalarProperty Name="RezervacijaID" ColumnName="RezervacijaID" />
                 <ScalarProperty Name="GostID" ColumnName="GostID" />
@@ -453,11 +466,12 @@
                 <ScalarProperty Name="Check_In" ColumnName="Check-In" />
                 <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
                 <ScalarProperty Name="SobaID" ColumnName="SobaID" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sobas">
-            <EntityTypeMapping TypeName="HotelModel.Soba">
+            <EntityTypeMapping TypeName="Model.Soba">
               <MappingFragment StoreEntitySet="Soba">
                 <ScalarProperty Name="SobaID" ColumnName="SobaID" />
                 <ScalarProperty Name="BrojKreveta" ColumnName="BrojKreveta" />
@@ -469,7 +483,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatusSobes">
-            <EntityTypeMapping TypeName="HotelModel.StatusSobe">
+            <EntityTypeMapping TypeName="Model.StatusSobe">
               <MappingFragment StoreEntitySet="StatusSobe">
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="NazivStatusa" ColumnName="NazivStatusa" />
@@ -477,7 +491,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="HotelModel.sysdiagram">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -488,7 +502,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ulogas">
-            <EntityTypeMapping TypeName="HotelModel.Uloga">
+            <EntityTypeMapping TypeName="Model.Uloga">
               <MappingFragment StoreEntitySet="Uloga">
                 <ScalarProperty Name="UlogaID" ColumnName="UlogaID" />
                 <ScalarProperty Name="NazivUloge" ColumnName="NazivUloge" />
@@ -496,10 +510,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Uslugas">
-            <EntityTypeMapping TypeName="HotelModel.Usluga">
+            <EntityTypeMapping TypeName="Model.Usluga">
               <MappingFragment StoreEntitySet="Usluga">
                 <ScalarProperty Name="UslugaID" ColumnName="UslugaID" />
                 <ScalarProperty Name="NazivUsluge" ColumnName="NazivUsluge" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

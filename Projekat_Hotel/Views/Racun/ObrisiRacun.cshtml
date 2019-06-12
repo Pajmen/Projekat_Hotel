@@ -1,0 +1,49 @@
+﻿@model Projekat_Hotel.Models.Racun
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Brisanje računa</h2>
+
+<h3>Jeste li sigurni da želite da obrišete ovaj račun?</h3>
+<div>
+    <h4>Racun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NacinPlacanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NacinPlacanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iznos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iznos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rezervacija.GostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezervacija.GostID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Obriši" class="btn btn-danger" /> |
+        @Html.ActionLink("Spisak računa", "SviRacuni", null, htmlAttributes: new { @class = "btn btn-default btn-sm" })
+    </div>
+    }
+</div>

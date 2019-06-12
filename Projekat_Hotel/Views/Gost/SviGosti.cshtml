@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Rezervacija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gosti</h2>
+@Html.ActionLink("Baza svih gostiju", "BazaGostiju", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+
+
+<table id="tabelaGosti" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GostID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gost.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gost.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gost.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soba.SobaID)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GostID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gost.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gost.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gost.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SobaID)
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
+

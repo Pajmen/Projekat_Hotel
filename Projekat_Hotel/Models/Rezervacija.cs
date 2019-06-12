@@ -11,7 +11,8 @@ namespace Projekat_Hotel.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Rezervacija
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,18 +20,50 @@ namespace Projekat_Hotel.Models
         {
             this.Racuns = new HashSet<Racun>();
         }
-    
+        [Display(Name = "Broj rezervacije")]
         public int RezervacijaID { get; set; }
-        public int GostID { get; set; }
+
+        [Required(ErrorMessage = "Ovo polje je obavezno!!!")]
+        [Display(Name = "Br. LK/pasoša")]
+        public string GostID { get; set; }
+
+        [Required(ErrorMessage = "Ovo polje je obavezno!!!")]
+        [Display(Name = "Usluga")]
         public int UslugaID { get; set; }
+
+        [Required(ErrorMessage = "Ovo polje je obavezno!!!")]
+        [Display(Name = "Datum dolaska")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime Check_In { get; set; }
+
+        [Required(ErrorMessage = "Ovo polje je obavezno!!!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Display(Name = "Datum odlaska")]
         public System.DateTime Check_Out { get; set; }
+
+        [Display(Name = "Broj sobe")]
         public int SobaID { get; set; }
-    
+
+
+        public double Cena { get; set; }
+
         public virtual Gost Gost { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Racun> Racuns { get; set; }
         public virtual Soba Soba { get; set; }
         public virtual Usluga Usluga { get; set; }
+
+        public int InitStatusSobe(DateTime Check_in)
+        {
+            int pocetniStatusSobe;
+            int vremenskaRazlika;
+            DateTime danas = DateTime.Now;
+            vremenskaRazlika = DateTime.Compare(Check_in.Date, danas.Date);
+            if (vremenskaRazlika == 0)
+            { pocetniStatusSobe = 1002; }
+            else
+            { pocetniStatusSobe = 1003; }
+            return pocetniStatusSobe;
+        }
     }
 }

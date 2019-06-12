@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Projekat_Hotel.Models.Soba>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Spisak Soba</h2>
+
+
+<table class="table" id="sveSobe">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SobaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrojKreveta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pogled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusSobe.NazivStatusa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SobaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojKreveta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pogled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sprat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusSobe.NazivStatusa)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "Edit", new { id = item.SobaID }, htmlAttributes: new { @class = "btn btn-warning btn-sm" }) @*|
+                        @Html.ActionLink("Detaljnije", "Details", new { id = item.SobaID }) |
+                        @Html.ActionLink("Obriši", "Delete", new { id = item.SobaID })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#sveSobe').DataTable();
+    });
+
+</script>

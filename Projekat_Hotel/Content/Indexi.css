@@ -1,0 +1,25 @@
+﻿body {
+    background-image: url('../images/in.jpg');
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+body > div {
+    min-height: 87vh;
+
+    /*background-image: url('../images/in.png');*/
+}
+
+hr {
+    display: none;
+}
+
+footer {
+    margin-top: 420px;
+    border-top: 1px solid #555555;
+}
+
+    footer p {
+        padding-top: 10px;
+    }
